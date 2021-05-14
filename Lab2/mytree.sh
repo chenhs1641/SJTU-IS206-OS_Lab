@@ -1,14 +1,15 @@
 function mytree() {
-	for file in `ls -a $1`
+    for file in `ls -a $1`
     do
         if [ -d $1"/"$file ]
         then
-			if [[ $file != '.' && $file != '..' ]]
+            if [[ $file != '.' && $file != '..' ]]
             then
-                mytree $1"/"$file "\t"$2
+                echo "$2$file"
+                mytree $1"/"$file "    $2"
             fi
         else
-            echo -e $2$file
+            echo "$2$file"
         fi
     done
 }
